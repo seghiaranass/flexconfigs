@@ -1,0 +1,58 @@
+services:
+  server:
+    container_name: 'flexconfigs-server'
+    image: "nginx:stable-alpine"
+    ports:
+      - '8080:80'
+    volumes:
+      - ./code:/var/www/html
+      - ./server/default.conf:/etc/nginx/conf.d/default.conf
+     
+  php:
+    container_name: 'flexconfigs-php'
+    build: 
+      context: ./php
+      dockerfile: dockerfile
+    volumes:
+      - ./code:/var/www/html
+
+  mysql:
+    container_name: 'flexconfigs-db'
+    image: 'mysql:latest'
+    env_file:
+      - ./env/mysql.conf
+    volumes:
+      - ./db:/var/lib/mysql
+
+    # volumes:
+    #   - ./db:/var/lib/mysql
+
+  composer:
+    container_name: 'flexconfigs-composer'
+    build: 
+      context: ./composer
+      dockerfile: dockerfile
+    volumes:
+      - ./code:/var/www/html
+
+  artisan:
+    container_name: 'flexconfigs-artisan'
+    build: 
+      context: ./php
+      dockerfile: dockerfile
+    volumes:
+      - ./code:/var/www/html
+    entrypoint: ["php","/var/www/html/artisan"]
+
+
+  # npm:
+  npm:
+    container_name: 'flexconfigs-npm'
+    image: node:22-alpine  # Node.js version
+    working_dir: /var/www/html
+    volumes:
+      - ./code:/var/www/html
+    command: ["/bin/sh", "-c", "npm install && yarn install"]  # Run npm and Yarn
+    environment:
+      - NODE_ENV=development
+    init: true
