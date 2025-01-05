@@ -1,0 +1,20 @@
+name: Auto Git Pull on flexconfigs Self-Hosted Runner
+
+on:
+  push:
+    branches:
+      - main-docker  # Change to your default branch name if needed
+
+jobs:
+  auto-pull:
+    runs-on: [self-hosted,flexconfigs-label]  # Match the label assigned during setup
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      - name: Docker Compose Up
+        run: |
+          echo "Running........"
+          docker-compose 
