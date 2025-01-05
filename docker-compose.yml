@@ -25,7 +25,7 @@ services:
       - ./db:/var/lib/mysql
 
     # volumes:
-    #   - ./db:/var/lib/mysql sdfasfa
+    #   - ./db:/var/lib/mysql
 
   composer:
     container_name: 'flexconfigs-composer'
