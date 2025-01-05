@@ -6,7 +6,7 @@ services:
       - '8080:80'
     volumes:
       - ./code:/var/www/html
-      - ./server/default.conf:/etc/nginx/conf.d/default.conf
+      - ./server:/etc/nginx/conf.d
      
   php:
     container_name: 'flexconfigs-php'
