@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /root/.a/workspaces/flex-configs/
+# cd /root/.a/workspaces/flex-configs/
 
 
 # Bring down the Docker services
