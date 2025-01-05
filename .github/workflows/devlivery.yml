@@ -36,6 +36,10 @@ jobs:
           sudo chown -R www-data:www-data ./code/storage/
           sudo chmod -R 777 ./code/storage
 
+      - name: Create .env file
+        run: |
+          cp ./code/.env.example ./code/.env
+
       - name: Run Artisan Commands
         run: |
           docker compose run --rm artisan key:generate
