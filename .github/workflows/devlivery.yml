@@ -15,8 +15,6 @@ jobs:
           sudo chown -R actions:actions /home/actions/actions-runner/_work/flexconfigs
           sudo chmod -R u+w /home/actions/actions-runner/_work/flexconfigs
 
-      # - name: Checkout repository
-      #   uses: actions/checkout@v4
 
       - name: Kill PHP and Server Services
         run: |
@@ -33,6 +31,11 @@ jobs:
           docker compose run --rm --build --remove-orphans composer
 
       - name: Start Docker Services
+        env:
+          MYSQL_DATABASE: ${{ vars.MYSQL_DATABASE }}
+          MYSQL_USER: ${{ vars.MYSQL_USER }}
+          MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+
         run: |
           docker compose up mysql php server --build --remove-orphans -d
 

@@ -7,6 +7,7 @@ services:
     volumes:
       - ./code:/var/www/html
       - ./server:/etc/nginx/conf.d
+
      
   php:
     container_name: 'flexconfigs-php'
