@@ -15,7 +15,7 @@ jobs:
 
       - name: Kill PHP and Server Services
         run: |
-          docker-compose kill php server
+          docker compose kill php server
 
       - name: Pull Latest Changes
         working-directory: ./code
@@ -25,11 +25,11 @@ jobs:
 
       - name: Run Composer
         run: |
-          docker-compose run --rm --build --remove-orphans composer
+          docker compose run --rm --build --remove-orphans composer
 
       - name: Start Docker Services
         run: |
-          docker-compose up mysql php server --build --remove-orphans -d
+          docker compose up mysql php server --build --remove-orphans -d
 
       - name: Set Permissions for Storage
         run: |
@@ -38,14 +38,14 @@ jobs:
 
       - name: Run Artisan Commands
         run: |
-          docker-compose run --rm artisan key:generate
-          docker-compose run --rm artisan config:clear
+          docker compose run --rm artisan key:generate
+          docker compose run --rm artisan config:clear
 
       - name: Install npm Dependencies and Build
         run: |
-          docker-compose run --rm npm npm install
-          docker-compose run --rm npm npm run build
+          docker compose run --rm npm npm install
+          docker compose run --rm npm npm run build
 
       - name: Run Database Migrations
         run: |
-          docker-compose run --rm artisan migrate --seed
+          docker compose run --rm artisan migrate --seed
