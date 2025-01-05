@@ -17,4 +17,5 @@ jobs:
       - name: Docker Compose Up
         run: |
           echo "Running........"
+          chmod +x ./update.sh
           ./update.sh
