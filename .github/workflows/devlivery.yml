@@ -25,7 +25,7 @@ jobs:
 
       - name: Run Composer
         run: |
-          docker-compose run --rm --build --remove-orphans composer
+          docker-compose run --rm --build --remove-orphans composer install
 
       - name: Start Docker Services
         run: |
