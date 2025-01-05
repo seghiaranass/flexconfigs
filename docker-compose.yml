@@ -5,7 +5,7 @@ services:
     ports:
       - '8080:80'
     volumes:
-      - code:/var/www/html
+      - ./code:/var/www/html
       - ./server:/etc/nginx/conf.d
      
   php:
@@ -14,7 +14,7 @@ services:
       context: ./php
       dockerfile: dockerfile
     volumes:
-      - code:/var/www/html
+      - ./code:/var/www/html
 
   mysql:
     container_name: 'flexconfigs-db'
@@ -33,7 +33,7 @@ services:
       context: ./composer
       dockerfile: dockerfile
     volumes:
-      - code:/var/www/html
+      - ./code:/var/www/html
 
   artisan:
     container_name: 'flexconfigs-artisan'
@@ -41,7 +41,7 @@ services:
       context: ./php
       dockerfile: dockerfile
     volumes:
-      - code:/var/www/html
+      - ./code:/var/www/html
     entrypoint: ["php","/var/www/html/artisan"]
 
 
@@ -51,12 +51,9 @@ services:
     image: node:22-alpine  # Node.js version
     working_dir: /var/www/html
     volumes:
-      - code:/var/www/html
+      - ./code:/var/www/html
     command: ["/bin/sh", "-c", "npm install && yarn install"]  # Run npm and Yarn
     environment:
       - NODE_ENV=development
     init: true
 
-
-volumes:
-  code:
