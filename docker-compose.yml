@@ -29,6 +29,7 @@ services:
 
   composer:
     container_name: 'flexconfigs-composer'
+    user: "${UID}:${GID}"
     build: 
       context: ./composer
       dockerfile: dockerfile
