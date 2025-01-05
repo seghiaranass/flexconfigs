@@ -16,8 +16,8 @@ git pull
 cd ..
 
 # Build and start necessary services
-docker-compose run --rm --remove-orphans composer 
-docker-compose up mysql php server --build --remove-orphans
+docker-compose run --rm --build --remove-orphans composer
+docker-compose up  mysql php server --build --remove-orphans
 
 # Wait for MySQL to be ready (max 30s)
 # echo "Waiting for MySQL to be ready..."
@@ -29,7 +29,7 @@ docker-compose up mysql php server --build --remove-orphans
 
 # Set proper permissions for storage
 sudo chown -R www-data:www-data ./code/storage/
-chmod -R 777 ./code/storage
+sudo chmod -R 777 ./code/storage
 
 # Run artisan commands
 docker-compose run --rm artisan key:generate
