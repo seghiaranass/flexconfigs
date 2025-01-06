@@ -7,13 +7,13 @@ on:
 
 jobs:
   auto-update:
-    runs-on: [self-hosted, flexconfigs-wsl-label]  # Match the label of your self-hosted runner
+    runs-on: [self-hosted, flexconfigs-label]  # Match the label of your self-hosted runner
 
     steps:
       - name: Fix File Ownership
         run: |
-          sudo chown -R anass:anass ~/workspaces/actions-runner/_work/flexconfigs
-          sudo chmod -R u+w ~/workspaces/actions-runner/_work/flexconfigs
+          sudo chown -R actions:actions /home/actions/actions-runner/_work/flexconfigs
+          sudo chmod -R u+w /home/actions/actions-runner/_work/flexconfigs
 
 
       - name: Kill PHP and Server Services
