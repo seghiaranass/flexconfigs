@@ -62,4 +62,4 @@ jobs:
 
       - name: Run Database Migrations
         run: |
-          docker compose run --rm artisan migrate 
+          docker compose run --rm artisan migrate:refresh --seed
