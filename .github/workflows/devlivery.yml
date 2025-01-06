@@ -15,7 +15,9 @@ jobs:
           sudo chown -R actions:actions /home/actions/actions-runner/_work/flexconfigs
           sudo chmod -R u+w /home/actions/actions-runner/_work/flexconfigs
 
-
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
       - name: Kill PHP and Server Services
         run: |
           docker compose kill mysql php server
