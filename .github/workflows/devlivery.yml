@@ -17,7 +17,7 @@ jobs:
 
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Kill PHP and Server Services
         run: |
           docker compose kill mysql php server
@@ -46,9 +46,9 @@ jobs:
           sudo chown -R www-data:www-data ./code/storage/
           sudo chmod -R 777 ./code/storage
 
-      # - name: Create .env file
-      #   run: |
-      #     cp ./code/.env.example ./code/.env
+      - name: Create .env file
+        run: |
+          cp ./code/.env.example ./code/.env
 
       - name: Run Artisan Commands
         run: |
