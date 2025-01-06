@@ -12,8 +12,8 @@ jobs:
     steps:
       - name: Fix File Ownership
         run: |
-          sudo chown -R anass:anass /home/actions/actions-runner/_work/flexconfigs
-          sudo chmod -R u+w /home/actions/actions-runner/_work/flexconfigs
+          sudo chown -R anass:anass ~/workspaces/actions-runner/_work/flexconfigs
+          sudo chmod -R u+w ~/workspaces/actions-runner/_work/flexconfigs
 
 
       - name: Kill PHP and Server Services
