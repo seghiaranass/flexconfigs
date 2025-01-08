@@ -2,19 +2,14 @@
 
     <x-slot:pageTitle>
         {{-- {{$title}}  --}}
+        Sign In
     </x-slot>
 
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <x-slot:headerFiles>
         <!--  BEGIN CUSTOM STYLE FILE  -->
-        @vite(['resources/scss/light/assets/authentication/auth-boxed.scss'])
-        @vite(['resources/scss/dark/assets/authentication/auth-boxed.scss'])
-
-        <style>
-            #load_screen {
-                display: none;
-            }
-        </style>
+        @vite(['resources/scss/light/assets/authentication/auth-cover.scss'])
+        @vite(['resources/scss/dark/assets/authentication/auth-cover.scss'])
         <!--  END CUSTOM STYLE FILE  -->
     </x-slot>
     <!-- END GLOBAL MANDATORY STYLES -->
@@ -25,8 +20,26 @@
     
             <div class="row">
     
-                <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-8 col-12 d-flex flex-column align-self-center mx-auto">
-                    <div class="card mt-3 mb-3">
+                <div class="col-6 d-lg-flex d-none h-100 my-auto top-0 start-0 text-center justify-content-center flex-column">
+                    <div class="auth-cover-bg-image"></div>
+                    <div class="auth-overlay"></div>
+                        
+                    <div class="auth-cover">
+    
+                        <div class="position-relative">
+    
+                            <img src="{{Vite::asset('resources/images/auth-cover.svg')}}" alt="auth-img">
+    
+                            <h2 class="mt-5 text-white font-weight-bolder px-2">Join the community of expert developers</h2>
+                            <p class="text-white px-2">It is easy to setup with great customer experience. Start your 7-day free trial</p>
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+                <div class="col-xxl-4 col-xl-5 col-lg-5 col-md-8 col-12 d-flex flex-column align-self-center ms-lg-auto me-lg-0 mx-auto">
+                    <div class="card">
                         <div class="card-body">
     
                             <div class="row">
