@@ -55,10 +55,11 @@ jobs:
           docker compose run --rm artisan key:generate
           docker compose run --rm artisan config:clear
 
-      - name: Install npm Dependencies and Build
-        run: |
-          docker compose run --rm npm npm install
-          docker compose run --rm npm npm run build
+      - name: npm install
+        run:  docker compose run --rm npm npm install
+         
+      - name: npm run build
+        run:  docker compose run --rm npm npm run build
 
       - name: Run Database Migrations
         run: |
