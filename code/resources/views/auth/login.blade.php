@@ -49,22 +49,31 @@
                                     <p>Enter your email and password to login</p>
                                     
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="mb-3">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control">
+                                <x-validation-errors class="mb-4" />
+                                @session('status')
+                                    <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+                                        {{ $value }}
                                     </div>
-                                </div>
-                                <div class="col-12">
-                                    <div class="mb-4">
-                                        <label class="form-label">Password</label>
-                                        <input type="text" class="form-control">
+                                @endsession
+                                <form method="POST" action="{{ route('login') }}">
+                                @csrf
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <x-label for="email" value="{{ __('Email') }}" />
+                                            <x-input id="email" class="form-control" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="col-12">
+                                        <div class="mb-4">
+                                        <x-label for="password" value="{{ __('Password') }}" />
+                                        <x-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" />
+                                        </div>
+                                    </div>
+                                
                                 <div class="col-12">
                                     <div class="mb-3">
                                         <div class="form-check form-check-primary form-check-inline">
-                                            <input class="form-check-input me-3" type="checkbox" id="form-check-default">
+                                            <input class="form-check-input me-3" type="checkbox" id="form-check-default" name="remember">
                                             <label class="form-check-label" for="form-check-default">
                                                 Remember me
                                             </label>
@@ -74,9 +83,11 @@
                                 
                                 <div class="col-12">
                                     <div class="mb-4">
-                                        <button class="btn btn-secondary w-100">SIGN IN</button>
+                                        <button class="btn btn-secondary w-100">Log In</button>
                                     </div>
+
                                 </div>
+                            </form>
                                 
                                 <div class="col-12 mb-4">
                                     <div class="">
